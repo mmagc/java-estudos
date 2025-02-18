@@ -1,15 +1,35 @@
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class ProcessoSeletivo {
     public static void main(String[] args) {
-        System.out.println("Proceso Seletivo");
-        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+        selecaoCandidatos();
+    }
 
-        System.out.println("Qual sua pretenção salarial? ");
-        double pretencao = scanner.nextDouble();
-        analisarCandidato(pretencao);
+    static void selecaoCandidatos(){
+        String [] candidatos = {"Matheus", "Luana", "Kayki", "Igor", "Pedro", "Rafael", "Muryllo", "Lucas", "Angelo", "Ailton"};
+
+        int candidatosSelecionados = 0;
+        int candidatoAtual = 0;
+        double salarioBase = 2000.0;
+
+        while(candidatosSelecionados < 5){
+            String candidato = candidatos[candidatoAtual];
+            double salarioPretendido = valorPretendido();
+
+            System.out.println("O candidato " + candidato + " tem salario pretendido: " + salarioPretendido);
+            System.out.println(" ");
+            if (salarioPretendido <= salarioBase){
+                System.out.println("O candidato " + candidato + " foi selecionado para a vaga");
+                System.out.println(" ");
+                candidatosSelecionados++;
+            }
+            candidatoAtual++;
+        }
+    }
+
+    static double valorPretendido(){
+        return ThreadLocalRandom.current().nextDouble(1800,2200);
     }
 
     static void analisarCandidato(double salarioPretendido) {
