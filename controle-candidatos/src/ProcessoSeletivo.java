@@ -7,6 +7,22 @@ public class ProcessoSeletivo {
         selecaoCandidatos();
     }
 
+    static void imprimirSelecionados(){
+        String [] candidatos = {"Matheus", "Luana", "Kayki", "Igor", "Pedro"};
+
+        System.out.println("Imprimindo a lista de candidatos informando  indice do elemento");
+
+        for (int i = 0; i < candidatos.length; i++) {
+            System.out.println("O candidato de n° " + (i+1) + " é " + candidatos[i]);
+        }
+
+        System.out.println("forma abreviada");
+
+        for (String candidato : candidatos) {
+            System.out.println("O candidato selecionado foi " + candidato);
+        }
+    }
+
     static void selecaoCandidatos(){
         String [] candidatos = {"Matheus", "Luana", "Kayki", "Igor", "Pedro", "Rafael", "Muryllo", "Lucas", "Angelo", "Ailton"};
 
@@ -31,18 +47,6 @@ public class ProcessoSeletivo {
 
     static double valorPretendido(){
         return ThreadLocalRandom.current().nextDouble(1800,2200);
-    }
-
-    static void analisarCandidato(double salarioPretendido) {
-        double salarioBase = 2000.0;
-
-        if (salarioPretendido < salarioBase) {
-            System.out.println("Ligar para o candidato");
-        } else if (salarioPretendido == salarioBase) {
-            System.out.println("Ligar para o candidato com contra proposta");
-        } else {
-            System.out.println("Aguardando resultados dos demais candidatos");
-        }
     }
 
 }
